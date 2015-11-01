@@ -27,7 +27,7 @@ setup(
     author = "Thomas",
     author_email='lyanghwy@gmail.com',
     description = "A Blog Cms backed by Tornado&MySQL in Python",
-    license = "GPL",
+    license = "http://www.apache.org/licenses/LICENSE-2.0",
     keywords = "A Blog Cms backed by Tornado&MySQL in Python",
     url='https://github.com/whiteclover/Zephyr',
     long_description=open('README.rst').read(),
@@ -42,7 +42,7 @@ setup(
     test_suite='unittests',
     classifiers=(
         "Development Status :: Production/Alpha",
-        "License :: GPL",
+        "License :: Apache Software License",
         "Natural Language :: English",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
