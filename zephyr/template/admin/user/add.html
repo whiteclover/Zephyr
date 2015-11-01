@@ -1,0 +1,68 @@
+{% include "admin/layout/header.html" %}
+<hgroup class="wrap">
+<h1>{{__('user.add_user')}}</h1>
+</hgroup>
+<section class="wrap">
+	<form method="post" action='/admin/user/add' novalidate autocomplete="off">
+		{{flash()}}
+		<fieldset class="half split">
+			<p>
+				<label>{{__('user.real_name')}}:</label>
+				<input type='text' name='real_name' value='{{handler.get_argument('real_name', '')}}'>
+				<em>{{__('user.real_name_explain')}}</em>
+			</p>
+			<p>
+				<label>{{__('user.bio')}}:</label>
+				<input type='text' name='bio' value='{{handler.get_argument('bio', '')}}' >
+				<em>{{__('user.bio_explain')}}</em>
+			</p>
+			<p>
+				<label>{{__('user.status')}}:</label>
+				<select name='status' id='status' value='{{handler.get_argument('status', '')}}'>
+					{% for name, value in statuses.items() %}
+						{% if name == handler.get_argument('status') %}
+							<option value="{{name}}" selected='selected'>{{value}}</option>
+						{% else %}
+							<option value="{{name}}">{{value}}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+				<em>{{__('user.status_explain')}}</em>
+			</p>
+			<p>
+				<label> {{__('user.role')}}:</label>
+				<select name='role' id='role' value='{{handler.get_argument('role', '')}}'>
+					{% for name, value in roles.items() %}
+						{% if name == handler.get_argument('role', '') %}
+							<option value="{{name}}" selected='selected'>{{value}}</option>
+						{% else %}
+							<option value="{{name}}">{{value}}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+				<em> {{__('user.role_explain')}}</em>
+			</p>
+		</fieldset>
+		<fieldset class="half split">
+			<p>
+				<label>{{__('user.username')}}:</label>
+				<input type='text' name='username' value='{{handler.get_argument('username', '')}}'>
+				<em>{{__('user.role_explain')}}</em>
+			</p>
+			<p>
+				<label>{{__('user.password')}}:</label>
+				<input type='password' name='password' value='{{handler.get_argument('password', '')}}'>
+				<em> {{__('user.password_explain')}}</em>
+			</p>
+			<p>
+				<label>{{__('user.email')}}:</label>
+				<input type='email' name='email' value='{{handler.get_argument('email', '')}}'>
+				<em> {{__('user.email_explain')}}</em>
+			</p>
+		</fieldset>
+		<aside class="buttons">
+			<input  value='{{__('global.create')}}' class='btn' type ='submit'>
+		</aside>
+	</form>
+</section>
+{% include "admin/layout/footer.html" %}
