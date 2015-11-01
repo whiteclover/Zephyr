@@ -190,8 +190,8 @@ Currently, using hocon config. the primary goal of hocon is: keep the semantics 
 	debug = off
 
 	db {
-		passwd = "thomas"
-	    user = "root"
+		passwd = "zephyr"
+	    user = "zephyr"
 	    host = "localhost"
 	    db = "zephyr"
 	}
