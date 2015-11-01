@@ -156,6 +156,9 @@ The terminal help options
 	                        The port of the tornado server (default 8888)
 	  -d, --debug           Open debug mode (default False)
 	  --language LANGUAGE   The language for the site (default 'en_GB')
+	  --content_path CONTENT_PATH
+                        The Upload path for storing uploaded assets (default
+                        '/upload')
 	  --theme THEME         The theme for the site (default 'default')
 	  --secert_key SECERT_KEY
 	                        The secert key for secure cookies (default
@@ -184,6 +187,8 @@ Currently, using hocon config. the primary goal of hocon is: keep the semantics 
 
 	# theme = "default"
 	# languge = "en_GB"
+	
+	content_path = "$upload_path" # required to store uploaded assets
 
 	secert_key = "7oGwHH8NQDKn9hL12Gak9G/MEjZZYk4PsAxqKU4cJoY="
 

@@ -29,6 +29,7 @@ class SiteBoot(object):
         _('-p', '--tornado.port', default=8888, help='The port of the tornado  server (default %(default)r)', type=int)
         _('-d', '--debug',  help='Open debug mode (default %(default)r)', action='store_true', default=False)
         _('--language', default='en_GB',  help="The language for the site (default %(default)r)")
+        _('--content_path', default='/upload',  help="The Upload path for storing uploaded assets (default %(default)r)")
         _('--theme', default='default',  help="The theme for the site (default %(default)r)")
         _('--secert_key', default="7oGwHH8NQDKn9hL12Gak9G/MEjZZYk4PsAxqKU4cJoY=", help='The secert key for secure cookies (default %(default)r)')
         _('-c', '--config', default='/etc/zephyr/app.conf',  help="config path (default %(default)r)", metavar="FILE")
