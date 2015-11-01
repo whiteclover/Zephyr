@@ -247,8 +247,8 @@ When you wanna use other wsgi servers, just booststrap app, then take the app in
 
 	if __name__ == "__main__":
 	    config = ConfigFactory.parseFile('$your_conf', pystyle=True)  # or use SelectConfig
-	   	app = ZephyrApp(config)
-	   	wsgi_app = tornado.wsgi.WSGIAdapter(app)
+	    app = ZephyrApp(config)
+	    wsgi_app = tornado.wsgi.WSGIAdapter(app)
 	    server = CherryPyWSGIServer(
 	        (config.get('cherry.host', 'localhost'), config.get('cherry.port', 8888)),
 	        wsgi_app,
