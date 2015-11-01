@@ -219,12 +219,12 @@ Currently, using hocon config. the primary goal of hocon is: keep the semantics 
 Try run
 --------------
 
-If you wanna use production mode and ``zephyrd`` running the blog service, please install ``gevent`` firstly. 
+If you wanna use production mode and ``zephyrd`` running the blog service.
 
 .. code-block:: bash
 
 	> python zephyrd -c=conf/config -d
-	 * Running on http://127.0.0.1:5000/
+	 * Running on http://127.0.0.1:8888/
 	 * Restarting with reloader
 
 
