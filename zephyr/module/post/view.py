@@ -97,7 +97,7 @@ class AddPost:
         author = self.account
         post = post_service.add_post(
             title, slug, description, html, css, js, category, status, comments, author)
-        extend_service.prcoess_field(self.application.config.get('content_path'), post, 'post')
+        extend_service.prcoess_field(self, post, 'post')
         self.redirect(self.reverse_url('post_page'))
 
 
@@ -141,7 +141,7 @@ class EditPost:
 
         post = post_service.update_post(
             title, slug, description, html, css, js, category, status, comments, post_id)
-        extend_service.prcoess_field(self.application.config.get('content_path'), post, 'post')
+        extend_service.prcoess_field(self, post, 'post')
         self.flash(text('post.updated'), 'success')
         self.redirect(self.reverse_url('post_edit', post_id))
 

@@ -101,7 +101,7 @@ class EditPage:
 
         page = page_service.update_page(
             parent, name, title, slug, content, status, redirect_, show_in_menu, page_id)
-        extend_service.prcoess_field(self.application.config.get('content_path'), page, 'page')
+        extend_service.prcoess_field(self, page, 'page')
         self.redirect(self.reverse_url('page_edit', page_id))
 
 
@@ -158,7 +158,7 @@ class AddPage:
 
         page = page_service.add_page(
             parent, name, title, slug, content, status, redirect_, show_in_menu)
-        extend_service.prcoess_field(self.application.config.get('content_path'), page, 'page')
+        extend_service.prcoess_field(self, page, 'page')
         self.redirect(self.reverse_url('page_page'))
 
 

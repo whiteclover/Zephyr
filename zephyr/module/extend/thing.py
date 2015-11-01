@@ -75,15 +75,15 @@ class ExtendThing(object):
             return None
         return self.extend_repo.delete(field)
 
-    def prcoess_field(self, content_path, node, type='post'):
-        FieldMananger(content_path, node, type).process()
+    def prcoess_field(self, handler, node, type='post'):
+        FieldMananger(handler, node, type).process()
 
 
 class FieldMananger(object):
 
-    def __init__(self, handeler, content_path, node, type='post'):
+    def __init__(self, handeler, node, type='post'):
         self.node = node
-        self.content_path = content_path
+        self.content_path = handler.application.config.get('content_path')
         self.request = handler.request
         self.handler  = handler
         self.type = type
