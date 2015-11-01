@@ -223,9 +223,12 @@ If you wanna use production mode and ``zephyrd`` running the blog service.
 
 .. code-block:: bash
 
-	> python zephyrd -c=conf/config -d
-	 * Running on http://127.0.0.1:8888/
-	 * Restarting with reloader
+	> python zephyrd -c=conf/app.conf -d
+	[20151101 12:26:06] zephyr[WARNING] autoload - In module zephyr.module.front.model : No module named model
+	[20151101 12:26:06] zephyr[WARNING] autoload - In module zephyr.module.menu.model : No module named model
+	[20151101 12:26:06] zephyr[WARNING] tornado.application - Multiple handlers named field_page; replacing previous value
+	[20151101 12:26:06] zephyr[WARNING] tornado.application - Multiple handlers named post_delete; replacing previous value
+	[20151101 12:26:06] zephyr[INFO] app - Starting zephyr on localhost:8888
 
 
 Run zephyr in Other WSGI Servers

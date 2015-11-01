@@ -25,7 +25,7 @@ class SiteBoot(object):
         options = options or self.options
         group = options.group("Service settings")
         _ = group.define
-        _('-H',  '--tornado.host', default='euterpe', help='The host of the tornado server (default %(default)r)')
+        _('-H',  '--tornado.host', default='localhost', help='The host of the tornado server (default %(default)r)')
         _('-p', '--tornado.port', default=8888, help='The port of the tornado  server (default %(default)r)', type=int)
         _('-d', '--debug',  help='Open debug mode (default %(default)r)', action='store_true', default=False)
         _('--language', default='en_GB',  help="The language for the site (default %(default)r)")
