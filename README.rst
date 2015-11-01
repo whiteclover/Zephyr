@@ -20,7 +20,7 @@ Features
 #. takes advantage of Tornado and Jinjia2
 
 
-.. image:: https://github.com/thomashuang/zephyr/blob/master/snap/home.png
+.. image:: https://github.com/whiteclover/white/blob/master/snap/home.png
 
 
 .. contents::
