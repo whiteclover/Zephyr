@@ -64,11 +64,11 @@ Setup Database
 ==============
 
 * create database in mysql:
-* then run the mysql schema.sql script in the project directoy schema:
+* then run the mysql.sql script in the project directoy schema:
 
 .. code-block:: bash
 
-    mysql -u yourusername -p yourpassword yourdatabase < schema.sql
+    mysql -u yourusername -p yourpassword yourdatabase < mysql.sql
 
 
 if your database has not been created yet, log into your mysql first using:
@@ -191,7 +191,7 @@ Currently, using hocon config. the primary goal of hocon is: keep the semantics 
 
 	db {
 		passwd = "zephyr"
-	    user = "zephyr"
+		user = "zephyr"
 	    host = "localhost"
 	    db = "zephyr"
 	}
@@ -234,7 +234,7 @@ If you wanna use production mode and ``zephyrd`` running the blog service.
 Run zephyr in Other WSGI Servers
 ----------------------------------
 
-When you wanna use other wsgi servers, just booststrap app, then take the app in your server api:
+When you wanna use other wsgi servers, just bootstrap app, then take the app in your server api:
 
 .. code-block:: python
 

@@ -38,7 +38,6 @@ class ServiceMixin:
 class FrontMixin(ServiceMixin):
 
     def posts(self, page=1, category=None):
-        print
         if page <= 0:
             return self.theme_render(self, '404.html')
         total, posts = self.post_service.get_published_posts_page(
