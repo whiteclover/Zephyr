@@ -114,7 +114,7 @@ class FrontMixin(ServiceMixin):
 
         if validator.errors:
             self.req.flash(validator.errors, 'error')
-            return redirect(self.reverse_url('site.post', slug=slug))
+            return redirect(self.reverse_url('site_post', slug))
 
         status = site.get(
             'auto_published_comments', False) and 'approved' or 'pending'

@@ -89,7 +89,7 @@ class EditComment:
          )
         if validator.errors:
             self.flash(validator.errors, 'error')
-            self.redirect(self.reverse_url('comment_edit', comment_id=comment_id))
+            self.redirect(self.reverse_url('comment_edit', comment_id))
 
         comment = comment_service.update_comment(
             comment_id, name, email, content, status)

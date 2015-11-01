@@ -106,7 +106,7 @@ class AddUser:
 
         result = user_service.add_user(username, email, real_name, password, bio, status, role)
         if result['status'] == 'ok':
-            self.redirect(self.reverse_url('user_edit', uid=result['user'].uid))
+            self.redirect(self.reverse_url('user_edit', result['user'].uid))
         else:
             self.flash(result['errors'], 'error')
             self.render('admin/user/add.html', statuses=Account.STATUSES, roles=Account.ROLES)

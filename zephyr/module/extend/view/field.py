@@ -119,7 +119,7 @@ class EditField:
 
         if validator.errors:
             self.flash(validator.errors, 'error')
-            return self.redirect(self.reverse_url('field_edit', extend_id=extend_id))
+            return self.redirect(self.reverse_url('field_edit', extend_id))
 
         if field == 'image':
             attributes = {
