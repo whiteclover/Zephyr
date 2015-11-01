@@ -151,7 +151,7 @@ The terminal help options
 
 	Service settings:
 	  -H TORNADO.HOST, --tornado.host TORNADO.HOST
-	                        The host of the tornado server (default 'euterpe')
+	                        The host of the tornado server (default 'localhost')
 	  -p TORNADO.PORT, --tornado.port TORNADO.PORT
 	                        The port of the tornado server (default 8888)
 	  -d, --debug           Open debug mode (default False)
@@ -192,8 +192,8 @@ Currently, using hocon config. the primary goal of hocon is: keep the semantics 
 	db {
 		passwd = "zephyr"
 		user = "zephyr"
-	    host = "localhost"
-	    db = "zephyr"
+		host = "localhost"
+		db = "zephyr"
 	}
 
 
