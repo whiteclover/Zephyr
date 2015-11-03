@@ -19,7 +19,7 @@ from zephyr.breeze import Backend, Thing, AssetHandler
 
 def front_menu(m):
     r = m.r
-    m.connect(r'/conntent/(.*)', AssetHandler)
+    m.connect(r'/content/(.*)', AssetHandler)
     m.connect(r'/', FrontPage, name='site_page')
     m.connect(r('/<slug>'), FrontPage)
     m.connect(r('/post/<slug>'), SlugPostPage, name='site_post')
