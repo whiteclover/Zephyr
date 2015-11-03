@@ -1,0 +1,21 @@
+{% macro ExtendView(extend) -%}
+{% set field =  extend.field %}
+{% if field == 'text' %}
+	<input id="extend_{{extend.key}}" name="extend_{{extend.key}}' type="text" value="{{extend.meta.get('text', '')}}>
+{% elif field == 'html' %}
+
+	<textarea id="extend_{{extend.key}}" name="extend_{{extend.key}}" type="text">{{extend.meta.get('html', '')}}></textarea>
+{% elif field in ('file', 'image') %}
+	<span class="current-file">
+    {% set value = extend.meta.get('filename', '') %}
+           
+	{% if value %}
+       <a href="/content/{{value}}" target="_blank">{{value}}</a>
+    {% endif %}
+    </span>
+    <span class="file"> 
+    <input id="extend_{{extend.key}}" name="extend_{{extend.key}}" type="file"> 
+    </span>
+
+{% endif %}
+{% endmacro %}
