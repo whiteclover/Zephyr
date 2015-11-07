@@ -137,7 +137,7 @@ class EditPost:
          .check(slug, 'min', text('post.title_missing'), 1))
         if validator.errors:
             self.flash(validator.errors, 'error')
-            self.redirect(self.reverse_url('post_edit', post_id=post_id))
+            self.redirect(self.reverse_url('post_edit', post_id))
 
         post = post_service.update_post(
             title, slug, description, html, css, js, category, status, comments, post_id)
