@@ -23,7 +23,7 @@ def field_menu(m):
 
         menu.connect('/field/add', AddField, name='field_add')
         menu.connect(r('/field/<extend_id:int>/edit'), EditField, name='field_edit')
-        menu.connect(r('/field/<extend_id:int>/delete'), DeleteField, name='post_delete')
+        menu.connect(r('/field/<extend_id:int>/delete'), DeleteField, name='field_delete')
 
 from zephyr.lib.validator import Validator
 from zephyr.helper import site
