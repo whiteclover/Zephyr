@@ -38,7 +38,7 @@ setup(
         # Non-.py files to distribute as part of each package
         'zephyr': _package_data()
     },
-    install_requires = ['setuptools', 'tornado', 'markdown', 'Jinja2', 'dbpy', 'pillow'],
+    install_requires = ['setuptools', 'tornado', 'markdown', 'Jinja2', 'dbpy', 'pillow', 'redis'],
     test_suite='unittests',
     classifiers=(
         "Development Status :: Production/Alpha",
