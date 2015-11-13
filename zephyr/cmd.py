@@ -43,15 +43,15 @@ class Cmd(object):
             config = ConfigFactory.parseFile(o.config, pystyle=True)
             return config
         else:
-            return {}
+            return ConfigFactory.empty(pystyle=True)
 
     def parse_cmd(self, help_doc):
         self.options.setup_options(help_doc)
         BootOptions(self.options)
 
-        self._set_defaults()
+        c = self._set_defaults()
         opt = self.options.parse_args()
-        config = SelectConfig()
+        config = c.toSelectConfig()
         config.update(vars(opt))
         return config
 
@@ -67,6 +67,7 @@ class Cmd(object):
             if v != _Null:
                 d[k] = v
         self.options.set_defaults(**d)
+        return c
 
 
 __cmd = Cmd()

@@ -232,8 +232,8 @@ from .hocon import Parser, HoconRoot
 class ConfigFactory(object):
 
     @classmethod
-    def empty(cls):
-        return cls.parse("")
+    def empty(cls, pystyle=False):
+        return cls.parse("", pystyle)
 
     @classmethod
     def parse(cls, hocon, func=None, pystyle=False):
