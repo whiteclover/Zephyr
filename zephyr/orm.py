@@ -29,7 +29,7 @@ class PrimaryTrait(object):
     def findByKey(self, **kw):
         q = db.select(self.table)
         for k, v in kw.items():
-            q.condition(self.primary_id, id)
+            q.condition(k, v)
         data = q.query()
         if data:
             return self.load(data[0], self.model)
