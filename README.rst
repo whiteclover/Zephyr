@@ -3,7 +3,6 @@ zephyr
 
 
 Zephyr is a blog cms.
-The zephyr project rewrite using Tornado.
 
 
 Features
