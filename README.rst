@@ -2,7 +2,7 @@ zephyr
 #########
 
 
-Zephyr is a blog cms. it's cloned from  `white <https://github.com/whiteclover/white>`_ that a blog cms wrote by flask.
+Zephyr is a blog cms.
 The zephyr project rewrite using Tornado.
 
 
