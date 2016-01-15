@@ -94,7 +94,7 @@ class FrontMixin(ServiceMixin):
     def post_comment(self, slug):
         post = self.post_service.get_by_slug(slug)
         if not post:
-            return theme_render('404.html', page_title='Not Found')
+            return self.theme_render('404.html', page_title='Not Found')
 
         if post and not post.allow_comment:
             return self.redirect(self.reverse_url('site_post', slug))
@@ -112,7 +112,7 @@ class FrontMixin(ServiceMixin):
          )
 
         if validator.errors:
-            self.req.flash(validator.errors, 'error')
+            self.flash(validator.errors, 'error')
             return redirect(self.reverse_url('site_post', slug))
 
         status = site.get(
