@@ -113,7 +113,7 @@ class Handler(RequestHandler, FlashMessagesMixin):
         self.finish(html)
 
     def on_finish(self):
-        self.hooks.run('on_end_request')
+        self.hooks.run('on_end_request', self)
         self.on_end_request()
 
     def on_end_request(self):
