@@ -213,7 +213,7 @@ Currently, using hocon config. the primary goal of hocon is: keep the semantics 
 
 
 	jinja2 {
-		cache_path = "./cache" # mako module cache  path, comments it if wanna  disable 
+		cache_path = "./cache" # jinja2 module cache  path, comments it if wanna  disable 
 		auto_reload = on 
 	}
 
@@ -227,7 +227,7 @@ If you wanna use production mode and ``zephyrd`` running the blog service.
 
 .. code-block:: bash
 
-	> python zephyrd -c=conf/app.conf -d
+	> python zephyrd -c=conf/app.conf -d #( -d to open debug mode)
 	[20151101 12:26:06] zephyr[WARNING] autoload - In module zephyr.module.front.model : No module named model
 	[20151101 12:26:06] zephyr[WARNING] autoload - In module zephyr.module.menu.model : No module named model
 	[20151101 12:26:06] zephyr[WARNING] tornado.application - Multiple handlers named field_page; replacing previous value
