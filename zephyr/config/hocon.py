@@ -24,7 +24,7 @@ class HoconRoot(object):
         self.substitutions = substitutions or []
 
 
-class MightBeAHoconObject:
+class MightBeAHoconObject(object):
     pass
 
 
