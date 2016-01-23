@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# 2015 Copyright (C) zephyr
+# 2015-2016 Copyright (C) zephyr
 
 from .model import User
 import db
