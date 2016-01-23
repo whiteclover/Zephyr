@@ -18,13 +18,6 @@ from tornado.escape import utf8, json_encode, json_decode
 from tornado.web import RequestHandler, url, StaticFileHandler
 
 
-__all__ = ['Handler',
-           'RenderHandler',
-           'Backend', 'Model', 'Thing',
-           'url'
-           ]
-
-
 def Backend(key):
     return __backend.get(key)
 
@@ -37,15 +30,21 @@ def Model(key):
     return __model.get(key)
 
 
-from zephyr.session import SessionManager, handler_security
-from zephyr.flash import FlashMessagesMixin
+from .flash import FlashMessagesMixin
 
 
 class Handler(RequestHandler, FlashMessagesMixin):
 
     def prepare(self):
-        self.account = None
-        SessionManager(self).loadByRequest()
+        self.hooks.run('on_start_request', self)
+        self.on_start_request()
+
+    def on_start_request(self):
+        pass
+
+    @property
+    def hooks(self):
+        return self.application.hooks
 
     @property
     def remote_ip(self):
@@ -113,8 +112,13 @@ class Handler(RequestHandler, FlashMessagesMixin):
         html = self.render_string(template_name, **kwargs)
         self.finish(html)
 
+    def on_finish(self):
+        self.hooks.run('on_end_request')
+        self.on_end_request()
 
-      
+    def on_end_request(self):
+        pass
+
     def Backend(self, key):
         return __backend.get(key)
 
@@ -132,20 +136,6 @@ class RenderHandler(Handler):
 
     def get(self, *args):
         self.render(self.template)
-
-
-class SecurityMeta(type):
-
-    def __new__(metacls, cls_name, bases, attrs):
-        role = attrs.get('__role__')
-
-        if role:
-            prepare = handler_security(role)(Handler.prepare)
-            attrs['prepare'] = prepare
-            del attrs['__role__']
-        cls = type.__new__(metacls, cls_name, bases, attrs)
-
-        return cls
 
 
 class AssetHandler(StaticFileHandler, Handler):

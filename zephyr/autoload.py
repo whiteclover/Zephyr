@@ -20,7 +20,8 @@ import os.path
 import re
 
 from zephyr import breeze
-from zephyr.breeze import Handler, RenderHandler, url, SecurityMeta
+from zephyr.breeze import Handler, RenderHandler, url
+from zephyr.session import SecurityMeta
 from zephyr.util import with_metaclass
 
 
@@ -61,7 +62,7 @@ class AutoLoader(object):
                 except ImportError as e:
                     LOG.warning("In module %s : %s", model_path, e)
                     continue
-        setattr(breeze, '__model', self.models)
+        setattr(breeze.core, '__model', self.models)
 
     def mount_mapper(self):
         current_path = os.path.dirname(__file__)
@@ -81,7 +82,7 @@ class AutoLoader(object):
                 except ImportError as e:
                     continue
 
-        setattr(breeze, '__backend', self.mappers)
+        setattr(breeze.core, '__backend', self.mappers)
 
     def mount_thing(self):
         current_path = os.path.dirname(__file__)
@@ -100,7 +101,7 @@ class AutoLoader(object):
                 except ImportError as e:
                     continue
 
-        setattr(breeze, '__thing', self.things)
+        setattr(breeze.core, '__thing', self.things)
 
     def mount_menu(self):
         current_path = os.path.dirname(__file__)

@@ -55,23 +55,29 @@ def patch_tornado():
         return json.dumps(value, default=default, ensure_ascii=ensure_ascii)
 
     def write_error(self, status_code, **kwargs):
-        if status_code == 404:
-            theme = self.application.config.get('theme', 'default')
-            tpl = 'theme/' + theme + '/404.html'
-            self.render(tpl, page_title='Not Found')
-        else:
-            if self.settings.get("serve_traceback") and "exc_info" in kwargs:
-                # in debug mode, try to send a traceback
-                self.set_header('Content-Type', 'text/plain')
-                for line in traceback.format_exception(*kwargs["exc_info"]):
-                    self.write(line)
-                    self.finish()
+        """Handle the last unanticipated exception. (Core)"""
+        try:
+            self.hooks.run("before_error_response",
+                           self, status_code, **kwargs)
+            handler = self.application.error_pages.get(str(status_code), None)
+            if handler:
+                handler(self, status_code, **kwargs)
             else:
-                self.finish("<html><title>%(code)d: %(message)s</title>"
+                if self.settings.get("serve_traceback") and "exc_info" in kwargs:
+                    # in debug mode, try to send a traceback
+                    self.set_header('Content-Type', 'text/plain')
+                    for line in traceback.format_exception(*kwargs["exc_info"]):
+                        self.write(line)
+                        self.finish()
+                else:
+                    self.finish("<html><title>%(code)d: %(message)s</title>"
                             "<body>%(code)d: %(message)s</body></html>" % {
                                 "code": status_code,
                                 "message": self._reason,
                             })
+        finally:
+            self.hooks.run("after_error_response", self, status_code, **kwargs)
+
 
     from tornado import escape
     from tornado import web

@@ -17,18 +17,16 @@
 import os
 import os.path
 
-from zephyr.patch import patch_tornado
-
-patch_tornado()
 
 import db
-import tornado.web
 from zephyr import pedis
 from zephyr.autoload import AutoLoader
 from zephyr.jinja2t import Jinja2Loader
+import zephyr.breeze
 
+import zephyr.hooks
 
-class ZephyrApp(tornado.web.Application):
+class ZephyrApp(zephyr.breeze.Application):
 
     def __init__(self, config):
         self.config = config
@@ -45,8 +43,11 @@ class ZephyrApp(tornado.web.Application):
             debug=self.config.get("debug", False),
             cookie_secret=self.config.get("secert_key", None)
         )
-        tornado.web.Application.__init__(
+        zephyr.breeze.Application.__init__(
             self, self.autoload.routes, **settings)
+
+        self.hooks.attach("on_start_request", zephyr.hooks.on_load_session)
+        self.error_page(404, zephyr.hooks.on_not_found)
 
     def boot_template(self):
         template_loader = Jinja2Loader(

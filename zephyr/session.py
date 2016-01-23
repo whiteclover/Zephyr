@@ -191,6 +191,8 @@ class SessionManager(object):
         return SessionID(uid, session_id)
 
 
+from zephyr.breeze import Handler
+
 def security(role='guest'):
     def decorator(f):
         @wraps(f)
@@ -238,3 +240,17 @@ def handler_security(role='guest'):
                 return self.render('admin/403.html')
         return _decorator
     return decorator
+
+
+class SecurityMeta(type):
+
+    def __new__(metacls, cls_name, bases, attrs):
+        role = attrs.get('__role__')
+
+        if role:
+            prepare = handler_security(role)(Handler.prepare)
+            attrs['prepare'] = prepare
+            del attrs['__role__']
+        cls = type.__new__(metacls, cls_name, bases, attrs)
+
+        return cls
